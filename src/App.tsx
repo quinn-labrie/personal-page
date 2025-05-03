@@ -5,18 +5,22 @@ import TypingText from './components/TypingText';
 
 function App() {
 	const textItems = [
-		{ label: 'Name', text: 'Quinn LaBrie' },
-		{ label: 'Occupation', text: 'Software Engineer' },
-		{ label: 'Email', text: 'quinn.labrie@gmail.com' },
-		{ label: 'Location', text: 'Austin, TX, USA' },
+		{ label: `"name"`, text: `"quinn labrie",` },
+		{ label: `"occupation"`, text: `"full stack software engineer",` },
+		{ label: `"email"`, text: `"quinn.labrie@gmail.com",` },
+		{ label: `"location"`, text: `"austin, tx, usa",` },
 		{},
 		{
-			label: 'Skills',
-			text: 'Typescript, Next, React, Node',
+			label: `"languages"`,
+			text: `["typescript", "javascript"],`,
 		},
 		{
-			label: 'Databases',
-			text: 'PostgreSQL, MongoDB',
+			label: `"frameworks"`,
+			text: `["react", "next.js", "nest.js"],`,
+		},
+		{
+			label: `"databases"`,
+			text: `["postgresql", "mongodb"]`,
 		},
 	];
 
@@ -38,6 +42,7 @@ function App() {
 	return (
 		<Card className="items-start w-full max-w-md mx-auto mt-[20vh]">
 			<CardContent className="flex flex-col items-start">
+				<p>{`{`}</p>
 				{textItems.map((item, index) => {
 					if (!item.label || !item.text) {
 						return <br key={`break-${index}`} />;
@@ -54,9 +59,11 @@ function App() {
 									? handleLineComplete
 									: undefined
 							}
+							indentLevel={1} // Add indentation
 						/>
 					);
 				})}
+				<p>{`}`}</p>
 			</CardContent>
 			<CardContent className="flex flex-row-reverse w-full">
 				<a
@@ -70,7 +77,7 @@ function App() {
 					/>
 				</a>
 				<a
-					href="https://www.linkedin.com/in/quinn-labrie-300411a9/"
+					href="https://github.com/quinn-labrie"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="mr-1"

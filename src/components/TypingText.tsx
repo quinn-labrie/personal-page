@@ -6,6 +6,7 @@ interface TypingTextProps {
 	text: string;
 	startTyping: boolean;
 	onComplete?: () => void;
+	indentLevel?: number; // Add this to control indentation
 }
 
 export default function TypingText({
@@ -13,14 +14,23 @@ export default function TypingText({
 	text,
 	startTyping,
 	onComplete,
+	indentLevel = 1, // Default indent level
 }: TypingTextProps) {
 	const [displayedText, setDisplayedText] = useState('');
 	const [isTyping, setIsTyping] = useState(false);
 	const hasTypedRef = useRef(false);
 
+	// Combine label and text into a complete line
+	const fullLine = `${label}: ${text}`;
+
+	// Calculate indent style
+	const indentStyle = {
+		paddingLeft: `${indentLevel * 20}px`, // 20px per indent level
+	};
+
 	useEffect(() => {
 		if (hasTypedRef.current) {
-			setDisplayedText(text);
+			setDisplayedText(fullLine);
 			return;
 		}
 
@@ -28,9 +38,9 @@ export default function TypingText({
 			setIsTyping(true);
 			let i = 0;
 			const typing = setInterval(() => {
-				setDisplayedText(text.substring(0, i));
+				setDisplayedText(fullLine.substring(0, i));
 				i++;
-				if (i > text.length) {
+				if (i > fullLine.length) {
 					clearInterval(typing);
 					setIsTyping(false);
 					hasTypedRef.current = true;
@@ -42,11 +52,13 @@ export default function TypingText({
 
 			return () => clearInterval(typing);
 		}
-	}, [text, startTyping, onComplete]);
+	}, [fullLine, startTyping, onComplete]);
 
 	return (
-		<p>
-			{label}:{' '}
+		<p
+			style={indentStyle}
+			className="typing-line"
+		>
 			<span className={`typing-text ${isTyping ? 'typing' : 'finished'}`}>
 				{displayedText}
 			</span>
