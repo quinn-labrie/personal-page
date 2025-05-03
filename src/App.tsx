@@ -1,12 +1,13 @@
 import './App.css';
 import OminousOrbScene from './components/OminousOrb';
+import { ThemeProvider } from './components/ThemeProvider';
 
 function App() {
 	return (
-		<>
-			Quinn LaBrie
+		<ThemeProvider>
+			<div>Quinn LaBrie</div>
 			<OminousOrbScene />
-		</>
+		</ThemeProvider>
 	);
 }
 
