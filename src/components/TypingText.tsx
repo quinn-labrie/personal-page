@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import './typing-cursor.css';
+import './TypingCursor.css';
 
 interface TypingTextProps {
 	label: string;
@@ -38,7 +38,7 @@ export default function TypingText({
 						setTimeout(onComplete, 500);
 					}
 				}
-			}, 100);
+			}, 75);
 
 			return () => clearInterval(typing);
 		}
