@@ -38,7 +38,7 @@ export default function TypingText({
 						setTimeout(onComplete, 500);
 					}
 				}
-			}, 75);
+			}, 50);
 
 			return () => clearInterval(typing);
 		}

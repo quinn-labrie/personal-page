@@ -6,33 +6,57 @@ import TypingText from './components/TypingText';
 function App() {
 	const textItems = [
 		{ label: 'Name', text: 'Quinn LaBrie' },
-		{ label: 'Email', text: 'quinn.labrie@gmail.com' },
 		{ label: 'Occupation', text: 'Software Engineer' },
-		{ label: 'Location', text: 'Austin, TX' },
+		{ label: 'Email', text: 'quinn.labrie@gmail.com' },
+		{ label: 'Location', text: 'Austin, TX, USA' },
+		{},
+		{
+			label: 'Skills',
+			text: 'Typescript, Next, React, Node',
+		},
+		{
+			label: 'Databases',
+			text: 'PostgreSQL, MongoDB',
+		},
 	];
 
 	const [activeLineIndex, setActiveLineIndex] = useState(0);
 
 	const handleLineComplete = () => {
-		setActiveLineIndex((prev) => prev + 1);
+		setActiveLineIndex((prev) => {
+			let nextIndex = prev + 1;
+			while (
+				nextIndex < textItems.length &&
+				Object.keys(textItems[nextIndex]).length === 0
+			) {
+				nextIndex++;
+			}
+			return nextIndex;
+		});
 	};
 
 	return (
 		<Card className="items-start w-full max-w-md mx-auto mt-[20vh]">
 			<CardContent className="flex flex-col items-start">
-				{textItems.map((item, index) => (
-					<TypingText
-						key={item.label}
-						label={item.label}
-						text={item.text}
-						startTyping={index <= activeLineIndex}
-						onComplete={
-							index === activeLineIndex
-								? handleLineComplete
-								: undefined
-						}
-					/>
-				))}
+				{textItems.map((item, index) => {
+					if (!item.label || !item.text) {
+						return <br key={`break-${index}`} />;
+					}
+
+					return (
+						<TypingText
+							key={item.label}
+							label={item.label}
+							text={item.text}
+							startTyping={index <= activeLineIndex}
+							onComplete={
+								index === activeLineIndex
+									? handleLineComplete
+									: undefined
+							}
+						/>
+					);
+				})}
 			</CardContent>
 			<CardContent className="flex flex-row-reverse w-full">
 				<a
@@ -46,7 +70,7 @@ function App() {
 					/>
 				</a>
 				<a
-					href="https://github.com/quinn-labrie"
+					href="https://www.linkedin.com/in/quinn-labrie-300411a9/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="mr-1"
