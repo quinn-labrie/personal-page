@@ -1,12 +1,7 @@
-import './App.css'
+import './App.css';
 
 function App() {
-
-  return (
-    <>
-    Quinn LaBrie
-    </>
-  )
+	return <>Quinn LaBrie</>;
 }
 
-export default App
+export default App;
