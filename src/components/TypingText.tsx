@@ -57,10 +57,7 @@ export default function TypingText({
 			: '';
 
 	return (
-		<p
-			className="text-left pl-4 text-lg"
-			style={{ margin: 0, lineHeight: 1.5 }}
-		>
+		<p className="text-left pl-4 text-sm md:text-lg leading-relaxed">
 			<span className="text-gray-500">{visibleLabel}</span>
 			<span>{visibleText}</span>
 			{isTyping && <span>|</span>}
