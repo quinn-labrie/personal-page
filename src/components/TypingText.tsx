@@ -14,24 +14,27 @@ export default function TypingText({
 	startTyping,
 	onComplete,
 }: TypingTextProps) {
-	const [displayedText, setDisplayedText] = useState('');
+	const [chars, setChars] = useState(0);
 	const [isTyping, setIsTyping] = useState(false);
 	const hasTypedRef = useRef(false);
 
-	const fullLine = `${label}: ${text}`;
+	const labelWithColon = `${label}: `;
+
 	useEffect(() => {
 		if (hasTypedRef.current) {
-			setDisplayedText(fullLine);
+			setChars(labelWithColon.length + text.length);
 			return;
 		}
 
 		if (startTyping && !hasTypedRef.current) {
 			setIsTyping(true);
 			let i = 0;
+			const fullLength = labelWithColon.length + text.length;
+
 			const typing = setInterval(() => {
-				setDisplayedText(fullLine.substring(0, i));
+				setChars(i);
 				i++;
-				if (i > fullLine.length) {
+				if (i > fullLength) {
 					clearInterval(typing);
 					setIsTyping(false);
 					hasTypedRef.current = true;
@@ -43,13 +46,25 @@ export default function TypingText({
 
 			return () => clearInterval(typing);
 		}
-	}, [fullLine, startTyping, onComplete]);
+	}, [labelWithColon, text, startTyping, onComplete]);
+
+	const visibleLabel = labelWithColon.substring(
+		0,
+		Math.min(chars, labelWithColon.length)
+	);
+	const visibleText =
+		chars > labelWithColon.length
+			? text.substring(0, chars - labelWithColon.length)
+			: '';
 
 	return (
-		<p className="typing-line pl-6">
-			<span className={`typing-text ${isTyping ? 'typing' : 'finished'}`}>
-				{displayedText}
-			</span>
+		<p
+			className="typing-line pl-6"
+			style={{ margin: 0, lineHeight: 1.5 }}
+		>
+			<span className="text-gray-500">{visibleLabel}</span>
+			<span className="value-text">{visibleText}</span>
+			{isTyping && <span className="cursor">|</span>}
 		</p>
 	);
 }

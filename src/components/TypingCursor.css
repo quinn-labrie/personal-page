@@ -1,5 +1,6 @@
 .typing-text {
 	position: relative;
+	line-height: 2rem;
 }
 
 .typing-text.typing::after {
