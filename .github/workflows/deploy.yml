@@ -16,6 +16,9 @@ jobs:
             - run: yarn install --frozen-lockfile
             - run: yarn build
             - run: touch dist/.nojekyll
+            - run: cp _headers dist/ || echo "No _headers file found"
+            - run: cp vercel.json dist/ || echo "No vercel.json file found"
+
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@v4
               with:
