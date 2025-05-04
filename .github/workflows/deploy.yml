@@ -4,18 +4,30 @@ on:
     push:
         branches: [main]
 
+permissions:
+    contents: write
+
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
               with:
                   node-version: 18
                   cache: 'yarn'
-            - run: yarn install --frozen-lockfile
-            - run: yarn build
-            - run: touch dist/.nojekyll
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: Build
+              run: yarn build
+
+            - name: Add .nojekyll file
+              run: touch dist/.nojekyll
 
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@v4
