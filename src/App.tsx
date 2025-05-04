@@ -23,7 +23,7 @@ function App() {
 	};
 
 	return (
-		<Card className="items-start w-full max-w-md mx-auto mt-[10vh] p-2">
+		<Card className="items-start w-full max-w-md mx-auto mt-[10vh] p-2 gap-0">
 			<CardContent className="flex flex-col items-start p-2">
 				<p>{`{`}</p>
 				{info.map((item, index) => {
