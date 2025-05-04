@@ -57,14 +57,14 @@ function App() {
 					/>
 				</a>
 				<a
-					href="https://github.com/quinn-labrie"
+					href="https://www.linkedin.com/in/quinn-labrie-300411a9/"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="mr-1"
 				>
 					<img
 						src={'src/assets/InBug-White.png'}
-						className="w-6 h-6"
+						className="w-7 h-6"
 					/>
 				</a>
 			</CardContent>

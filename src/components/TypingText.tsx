@@ -36,10 +36,10 @@ export default function TypingText({
 					setIsTyping(false);
 					hasTypedRef.current = true;
 					if (onComplete) {
-						setTimeout(onComplete, 500);
+						setTimeout(onComplete, 200);
 					}
 				}
-			}, 50);
+			}, 25);
 
 			return () => clearInterval(typing);
 		}
