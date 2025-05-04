@@ -2,36 +2,17 @@ import { useState } from 'react';
 import './App.css';
 import { Card, CardContent } from './components/ui/card';
 import TypingText from './components/TypingText';
+import { info } from './lib/consts';
 
 function App() {
-	const textItems = [
-		{ label: `"name"`, text: `"quinn labrie",` },
-		{ label: `"occupation"`, text: `"full stack software engineer",` },
-		{ label: `"email"`, text: `"quinn.labrie@gmail.com",` },
-		{ label: `"location"`, text: `"austin, tx, usa",` },
-		{},
-		{
-			label: `"languages"`,
-			text: `["typescript", "javascript"],`,
-		},
-		{
-			label: `"frameworks"`,
-			text: `["react", "next.js", "nest.js"],`,
-		},
-		{
-			label: `"databases"`,
-			text: `["postgresql", "mongodb"]`,
-		},
-	];
-
 	const [activeLineIndex, setActiveLineIndex] = useState(0);
 
 	const handleLineComplete = () => {
 		setActiveLineIndex((prev) => {
 			let nextIndex = prev + 1;
 			while (
-				nextIndex < textItems.length &&
-				Object.keys(textItems[nextIndex]).length === 0
+				nextIndex < info.length &&
+				Object.keys(info[nextIndex]).length === 0
 			) {
 				nextIndex++;
 			}
@@ -43,7 +24,7 @@ function App() {
 		<Card className="items-start w-full max-w-md mx-auto mt-[20vh]">
 			<CardContent className="flex flex-col items-start">
 				<p>{`{`}</p>
-				{textItems.map((item, index) => {
+				{info.map((item, index) => {
 					if (!item.label || !item.text) {
 						return <br key={`break-${index}`} />;
 					}
@@ -59,7 +40,6 @@ function App() {
 									? handleLineComplete
 									: undefined
 							}
-							indentLevel={1} // Add indentation
 						/>
 					);
 				})}
