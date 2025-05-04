@@ -10,8 +10,9 @@ export default defineConfig({
 			'@': path.resolve(__dirname, './src'),
 		},
 	},
-	base: '/',
+	base: './',
 	build: {
+		outDir: 'dist',
 		rollupOptions: {
 			output: {
 				entryFileNames: 'assets/[name].[hash].js',
