@@ -21,8 +21,8 @@ function App() {
 	};
 
 	return (
-		<Card className="items-start w-full max-w-md mx-auto mt-[20vh]">
-			<CardContent className="flex flex-col items-start">
+		<Card className="items-start w-full max-w-md mx-auto mt-[10vh] p-2">
+			<CardContent className="flex flex-col items-start p-2">
 				<p>{`{`}</p>
 				{info.map((item, index) => {
 					if (!item.label || !item.text) {
@@ -45,7 +45,7 @@ function App() {
 				})}
 				<p>{`}`}</p>
 			</CardContent>
-			<CardContent className="flex flex-row-reverse w-full">
+			<CardContent className="flex flex-row-reverse w-full p-2">
 				<a
 					href="https://github.com/quinn-labrie"
 					target="_blank"

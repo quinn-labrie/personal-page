@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import './TypingCursor.css';
 
 interface TypingTextProps {
 	label: string;
@@ -59,12 +58,12 @@ export default function TypingText({
 
 	return (
 		<p
-			className="typing-line pl-6"
+			className="text-left pl-4 text-lg"
 			style={{ margin: 0, lineHeight: 1.5 }}
 		>
 			<span className="text-gray-500">{visibleLabel}</span>
-			<span className="value-text">{visibleText}</span>
-			{isTyping && <span className="cursor">|</span>}
+			<span>{visibleText}</span>
+			{isTyping && <span>|</span>}
 		</p>
 	);
 }
