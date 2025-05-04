@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { Card, CardContent } from './components/ui/card';
+import { Card, CardContent, CardFooter } from './components/ui/card';
 import TypingText from './components/TypingText';
 import { info } from './lib/consts';
 import githubLogo from './assets/github-mark-white.png';
@@ -23,8 +23,8 @@ function App() {
 	};
 
 	return (
-		<Card className="items-start w-full max-w-md mx-auto mt-[10vh] p-2 gap-0">
-			<CardContent className="flex flex-col items-start p-2">
+		<Card className="items-start w-full max-w-md mx-auto mt-[10vh]">
+			<CardContent className="flex flex-col items-start">
 				<p>{`{`}</p>
 				{info.map((item, index) => {
 					if (!item.label || !item.text) {
@@ -47,7 +47,7 @@ function App() {
 				})}
 				<p>{`}`}</p>
 			</CardContent>
-			<CardContent className="flex flex-row-reverse w-full p-2">
+			<CardFooter className="flex flex-row-reverse w-full">
 				<a
 					href="https://github.com/quinn-labrie"
 					target="_blank"
@@ -69,7 +69,7 @@ function App() {
 						className="w-7 h-6"
 					/>
 				</a>
-			</CardContent>
+			</CardFooter>
 		</Card>
 	);
 }
