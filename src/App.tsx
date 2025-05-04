@@ -3,8 +3,7 @@ import './App.css';
 import { Card, CardContent, CardFooter } from './components/ui/card';
 import TypingText from './components/TypingText';
 import { info } from './lib/consts';
-import githubLogo from './assets/github-mark-white.png';
-import linkedinLogo from './assets/InBug-White.png';
+import SocialLinks from './components/SocialLinks';
 
 function App() {
 	const [activeLineIndex, setActiveLineIndex] = useState(0);
@@ -23,8 +22,11 @@ function App() {
 	};
 
 	return (
-		<Card className="items-start w-full max-w-md mx-auto mt-[10vh]">
-			<CardContent className="flex flex-col items-start">
+		<Card className="items-start w-full max-w-md mx-auto mt-[10vh] card-appear">
+			<CardContent
+				className="flex flex-col items-start"
+				aria-label="Profile Information"
+			>
 				<p>{`{`}</p>
 				{info.map((item, index) => {
 					if (!item.label || !item.text) {
@@ -47,28 +49,11 @@ function App() {
 				})}
 				<p>{`}`}</p>
 			</CardContent>
-			<CardFooter className="flex flex-row-reverse w-full">
-				<a
-					href="https://github.com/quinn-labrie"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<img
-						src={githubLogo}
-						className="w-6 h-6"
-					/>
-				</a>
-				<a
-					href="https://www.linkedin.com/in/quinn-labrie-300411a9/"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="mr-1"
-				>
-					<img
-						src={linkedinLogo}
-						className="w-7 h-6"
-					/>
-				</a>
+			<CardFooter
+				className="flex flex-row-reverse w-full"
+				aria-label="Profile Links"
+			>
+				<SocialLinks />
 			</CardFooter>
 		</Card>
 	);
