@@ -3,6 +3,8 @@ import './App.css';
 import { Card, CardContent } from './components/ui/card';
 import TypingText from './components/TypingText';
 import { info } from './lib/consts';
+import githubLogo from './assets/github-mark-white.png';
+import linkedinLogo from './assets/InBug-White.png';
 
 function App() {
 	const [activeLineIndex, setActiveLineIndex] = useState(0);
@@ -52,7 +54,7 @@ function App() {
 					rel="noopener noreferrer"
 				>
 					<img
-						src={'src/assets/github-mark-white.png'}
+						src={githubLogo}
 						className="w-6 h-6"
 					/>
 				</a>
@@ -63,7 +65,7 @@ function App() {
 					className="mr-1"
 				>
 					<img
-						src={'src/assets/InBug-White.png'}
+						src={linkedinLogo}
 						className="w-7 h-6"
 					/>
 				</a>
