@@ -6,11 +6,11 @@
 	"homepage": "https://quinn-labrie.github.io/{personal-page}/",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b && vite build && touch dist/.nojekyll",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist"
+		"deploy": "npm run build && gh-pages -d dist"
 	},
 	"dependencies": {
 		"@radix-ui/react-progress": "^1.1.4",
